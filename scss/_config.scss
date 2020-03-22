@@ -1,0 +1,32 @@
+$primary-color: #444;
+$secondary-color: #eece1a;
+$show-image-image: true;
+$home-image: url(../imgs/HomePic1.jpeg);
+$background-opacity: 0.8;
+
+@mixin background {
+  @if $show-image-image {
+    &#bg-img {
+      background-image: $home-image;
+      background-attachment: fixed;
+      background-size: cover;
+
+      //treats as an element after the previous element
+      //(bg-img) but not actually present in html, content is must required
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: rgba($color: $primary-color, $alpha: $background-opacity);
+      }
+    }
+  }
+}
+
+@mixin EaseOut {
+  transition: all 1s ease-out;
+}
