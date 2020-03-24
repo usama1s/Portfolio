@@ -2,7 +2,7 @@ $primary-color: #444;
 $secondary-color: #eece1a;
 $show-image-image: true;
 $home-image: url(../imgs/HomePic1.jpeg);
-$portrait-image: url(../imgs/UsamaMunir.jfif);
+$portrait-image: url(../imgs/UsamaMunir.jpg);
 $background-opacity: 0.8;
 
 @mixin background {
@@ -30,4 +30,39 @@ $background-opacity: 0.8;
 
 @mixin EaseOut {
   transition: all 1s ease-out;
+}
+
+// Set Text color
+// changes the text color based on lightness of primary-color
+@function set-text-color($color) {
+  @if (lightness($color) >40) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
+//Media Query Mixins
+@mixin mediaSm {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin mediaMd {
+  @media screen and (min-width: 501px) and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mediaLg {
+  @media screen and (min-width: 769px) and (max-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin mediaXL {
+  @media screen and (min-width: 1171px) {
+    @content;
+  }
 }
